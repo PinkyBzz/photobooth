@@ -29,8 +29,10 @@ async function startCamera() {
   try {
     stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode }, audio: false });
     video.srcObject = stream;
+    return stream;
   } catch (err) {
     alert('Error accessing camera: ' + err.message);
+    throw err;
   }
 }
 
@@ -38,6 +40,7 @@ function stopCamera() {
   if (stream) {
     stream.getTracks().forEach(track => track.stop());
     stream = null;
+    video.srcObject = null;
   }
 }
 
@@ -216,13 +219,17 @@ restartBtn.addEventListener('click', () => {
 });
 
 switchCameraBtn.addEventListener('click', async () => {
-  if (facingMode === 'environment') {
-    facingMode = 'user';
-  } else {
-    facingMode = 'environment';
+  try {
+    if (facingMode === 'environment') {
+      facingMode = 'user';
+    } else {
+      facingMode = 'environment';
+    }
+    stopCamera();
+    await startCamera();
+  } catch (err) {
+    console.error('Failed to switch camera:', err);
   }
-  stopCamera();
-  await startCamera();
 });
 
 window.addEventListener('load', () => {

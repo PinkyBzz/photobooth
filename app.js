@@ -102,7 +102,7 @@ function downloadResult() {
   // Compose final image with background and photos arranged in neat 2x2 grid with subtle shadow and preserved aspect ratio
   const canvas = document.createElement('canvas');
   const width = 360;
-  const height = 400;
+  const height = 480; // increased height to fit bottom photos fully
   canvas.width = width;
   canvas.height = height;
   const context = canvas.getContext('2d');

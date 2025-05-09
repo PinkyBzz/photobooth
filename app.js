@@ -19,6 +19,12 @@ let currentPhotoIndex = 0;
 let stream = null;
 let facingMode = 'environment'; // default to back camera
 
+// Detect if device is mobile to default to front camera
+const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+if (isMobile) {
+  facingMode = 'user'; // front camera on mobile
+}
+
 async function startCamera() {
   try {
     stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode }, audio: false });

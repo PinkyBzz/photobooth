@@ -10,16 +10,18 @@ const polaroidContainer = document.getElementById('polaroid-container');
 const bgColorPicker = document.getElementById('bg-color-picker');
 const downloadBtn = document.getElementById('download-btn');
 const restartBtn = document.getElementById('restart-btn');
+const switchCameraBtn = document.getElementById('switch-camera-btn');
 
 const ctx = previewCanvas.getContext('2d');
 
 let photos = [];
 let currentPhotoIndex = 0;
 let stream = null;
+let facingMode = 'environment'; // default to back camera
 
 async function startCamera() {
   try {
-    stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' }, audio: false });
+    stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode }, audio: false });
     video.srcObject = stream;
   } catch (err) {
     alert('Error accessing camera: ' + err.message);
@@ -205,6 +207,16 @@ downloadBtn.addEventListener('click', () => {
 
 restartBtn.addEventListener('click', () => {
   resetApp();
+});
+
+switchCameraBtn.addEventListener('click', async () => {
+  if (facingMode === 'environment') {
+    facingMode = 'user';
+  } else {
+    facingMode = 'environment';
+  }
+  stopCamera();
+  await startCamera();
 });
 
 window.addEventListener('load', () => {

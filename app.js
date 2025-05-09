@@ -29,6 +29,12 @@ async function startCamera() {
   try {
     stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode }, audio: false });
     video.srcObject = stream;
+    // Apply or remove mirror class based on facingMode
+    if (facingMode === 'user') {
+      video.classList.add('mirrored');
+    } else {
+      video.classList.remove('mirrored');
+    }
     return stream;
   } catch (err) {
     alert('Error accessing camera: ' + err.message);

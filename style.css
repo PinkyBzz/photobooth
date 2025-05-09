@@ -46,6 +46,7 @@ video {
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(168, 72, 110, 0.4);
   background: #fce4ec;
+  transform: none !important; /* ensure no mirror */
 }
 
 canvas {

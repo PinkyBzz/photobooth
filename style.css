@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  background: #fff0f6;
+  color: #5a2a4a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.container {
+  max-width: 400px;
+  width: 100%;
+  background: #ffe4f0;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(90, 42, 74, 0.3);
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.title {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: #a8326a;
+  text-shadow: 1px 1px 2px #f8bbd0;
+}
+
+.section {
+  margin-top: 1rem;
+}
+
+.hidden {
+  display: none;
+}
+
+video {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(168, 72, 110, 0.4);
+  background: #fce4ec;
+}
+
+canvas {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(168, 72, 110, 0.4);
+  background: #fce4ec;
+}
+
+.btn {
+  cursor: pointer;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  margin: 0.5rem 0.3rem;
+  font-size: 1rem;
+  border-radius: 30px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(168, 72, 110, 0.3);
+  user-select: none;
+}
+
+.cute-btn {
+  background: #f48fb1;
+  color: white;
+  font-weight: 700;
+  text-shadow: 0 1px 1px #ad1457;
+}
+
+.cute-btn:hover {
+  background: #ec407a;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+#polaroid-container {
+  margin: 1rem auto;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  background: transparent;
+  perspective: none;
+}
+
+.polaroid {
+  position: relative;
+  width: 140px;
+  height: 180px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 15px rgba(90, 42, 74, 0.3);
+  overflow: hidden;
+  padding: 10px 10px 30px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: popIn 0.6s ease forwards;
+  user-select: none;
+  transform: none !important;
+  margin: 0;
+}
+
+.polaroid img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(168, 72, 110, 0.3);
+  border: none;
+  box-sizing: border-box;
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.3) rotateX(90deg);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) rotateX(0deg);
+    opacity: 1;
+  }
+}
+
+.color-label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 700;
+  color: #a8326a;
+  user-select: none;
+}
+
+@media (max-width: 480px) {
+  .container {
+    max-width: 100%;
+    padding: 1rem;
+  }
+
+  video, canvas {
+    border-radius: 12px;
+  }
+
+  .polaroid {
+    width: 100px;
+    height: 130px;
+  }
+
+  #polaroid-container {
+    height: auto;
+    gap: 10px;
+  }
+
+  .btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+    border-radius: 25px;
+  }
+
+  .btn-group {
+    gap: 0.8rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+}

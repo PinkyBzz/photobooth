@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Adorable Photobooth</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">Adorable Photobooth</h1>
+
+    <div id="camera-section" class="section">
+      <video id="video" autoplay playsinline></video>
+      <button id="capture-btn" class="btn cute-btn">Take Photo</button>
+    </div>
+
+    <div id="preview-section" class="section hidden">
+      <h2>Preview Photo</h2>
+      <canvas id="preview-canvas"></canvas>
+      <div class="btn-group">
+        <button id="retake-btn" class="btn cute-btn">Retake</button>
+        <button id="next-btn" class="btn cute-btn">Next</button>
+      </div>
+    </div>
+
+    <div id="result-section" class="section hidden">
+      <h2>Your Polaroid Printout</h2>
+      <div id="polaroid-container"></div>
+
+      <label for="bg-color-picker" class="color-label">Choose Background Color:</label>
+      <input type="color" id="bg-color-picker" value="#fce4ec" />
+
+      <div class="btn-group">
+        <button id="download-btn" class="btn cute-btn">Download</button>
+        <button id="restart-btn" class="btn cute-btn">Restart</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
